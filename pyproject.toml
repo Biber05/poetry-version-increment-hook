@@ -1,0 +1,14 @@
+[tool.poetry]
+name = "poetry-version-increment-hook"
+version = "1.0.0"
+description = "pre-commit hook for incrementing poetry based project versions"
+authors = ["Philipp Wolters <philipp.wolters@codecentric.de>"]
+
+[tool.poetry.dependencies]
+python = ">=3.8; <3.10"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
