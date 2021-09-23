@@ -6,9 +6,38 @@ authors = ["Philipp Wolters <philipp.wolters@codecentric.de>"]
 
 [tool.poetry.dependencies]
 python = ">=3.8; <3.10"
+GitPython = "~3.1"
+toml = "^0.10.2"
 
 [tool.poetry.dev-dependencies]
+black = "^21.9b0"
+mypy = "^0.910"
+pytest = "^6.2.5"
+types-toml = "^0.10.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 79
+target-version = ['py38']
+include = '\.pyi?$'
+exclude = '''
+(
+  /(
+    | \.pytest_cache
+    | .mypy_cache
+    | \.git
+    | \.venv
+    | dist
+  )/
+)
+'''
+
+[mypy]
+ignore_missing_imports = true
+python_executable = ".venv/bin/python"
+no_site_packages = true
+python_version = "3.8"
+disallow_untyped_defs = false
