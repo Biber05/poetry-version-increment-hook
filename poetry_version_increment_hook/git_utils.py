@@ -53,4 +53,4 @@ def _read_git_branch() -> str:
     from pathlib import Path
 
     repo = git.Repo.init(Path.cwd().parent)
-    return repo.active_branch.name
+    return repo.active_branch.name.lower()
