@@ -1,12 +1,12 @@
 from pathlib import Path
-from typing import Dict
+from typing import Dict, Union
 
 import toml
 
 from poetry_version_increment_hook.version import Version
 
 
-def get_current_version(path: str = "pyproject.toml") -> Version:
+def get_current_version(path: Union[Path, str] = "pyproject.toml") -> Version:
     """
 
     Args:
@@ -20,7 +20,9 @@ def get_current_version(path: str = "pyproject.toml") -> Version:
     return Version(*[int(x) for x in version.split(".")])
 
 
-def write_new_version(version: Version, path: str = "pyproject.toml") -> bool:
+def write_new_version(
+    version: Version, path: Union[Path, str] = "pyproject.toml"
+) -> bool:
     """
 
     Args:
@@ -37,7 +39,7 @@ def write_new_version(version: Version, path: str = "pyproject.toml") -> bool:
     return get_current_version(path=path) == version
 
 
-def _read_toml(path: str) -> Dict:
+def _read_toml(path: Union[Path, str]) -> Dict:
     """
     Args:
         path: path to yaml file
@@ -52,7 +54,7 @@ def _read_toml(path: str) -> Dict:
     return toml.load(str(path))
 
 
-def _write_toml(data: Dict, file_path: str = "pyproject.toml"):
+def _write_toml(data: Dict, file_path: Union[Path, str] = "pyproject.toml"):
     """
     Args:
         data: dict of yaml values.
